@@ -18,12 +18,14 @@ mycursor = mydb.cursor()
 mycursor.execute("CREATE DATABASE BENCHMARK_PROJECT1")
 """
 #create table if not exists
-mycursor.execute("CREATE TABLE IF NOT EXISTS TENKTUP1\
+
+mycursor.execute("CREATE TABLE IF NOT EXISTS TENKTUP2\
                  (unique1 integer NOT NULL,unique2 integer PRIMARY KEY,two integer NOT NULL,\
                   four integer NOT NULL,ten integer NOT NULL,twenty integer NOT NULL,onePercent integer NOT NULL,\
                   tenPercent integer NOT NULL,twentyPercent integer NOT NULL,fiftyPercent integer NOT NULL,\
                   unique3 integer NOT NULL,evenOnePercent integer NOT NULL,oddOnePercent integer NOT NULL, \
                   stringu1 char(52) NOT NULL, stringu2 char(52) NOT NULL, stringu4 char(52) NOT NULL )")
+
 #list for the unique1 attribute
 uniqueL = []
 for i in range (MAXTUPLES):
@@ -97,13 +99,13 @@ def string4_(number):
     return n
 #Loop to populate the table
 for i in range (MAXTUPLES):
-    sql = "INSERT INTO TENKTUP1(unique1, unique2, two, four, ten , twenty, onePercent, \
+    sql = "INSERT INTO TENKTUP2(unique1, unique2, two, four, ten , twenty, onePercent, \
                                 tenPercent, twentyPercent, fiftyPercent, unique3, \
                                 evenOnePercent, oddOnePercent, stringu1, stringu2, stringu4 ) \
                                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, \
                                 %s, %s, %s, %s, %s, %s, %s)"
-    string_1 = unique1ToString(random.choice(unique1_list))
-    string_2 = unique1ToString(random.choice(unique2_list))
+    string_1 = unique1ToString(unique1_list[i])
+    string_2 = unique1ToString(unique2_list[i])
     string_4 = string4_(i)
     val = ( unique1_list[i], unique2_list[i], random.choice(unique1_list) % 2, random.choice(unique1_list) % 4, \
             random.choice(unique1_list)% 10, random.choice(unique1_list)% 20, random.choice(unique1_list) % 100, \
